@@ -25,18 +25,27 @@ namespace Ejercicio3
         [Test]
         public void test_1()
         {
+            //declaración de los selectores
+            By seachCourse = By.XPath("//input[@name='q']");
             By title = By.XPath("(//div[@class = 'course-curriculum__container'])[1]");
 
             driver.Navigate().GoToUrl(ultimateQa);
             driver.FindElement(By.LinkText("Courses")).Click();
-            var search = driver.FindElement(By.XPath("//input[@name='q']"));
+
+            //var search = driver.FindElement(By.XPath("//input[@name='q']"));
+            var search = driver.FindElement(seachCourse);
             search.Clear();
-            search.SendKeys("Selenium");
+            //Extender Webdriver - practice
+            driver.ExplicitWaitUntilText(() => driver.FindElement(seachCourse).Displayed, seachCourse, "Selenium", TimeSpan.FromSeconds(3));
+            //search.SendKeys("Selenium");
             search.SendKeys(Keys.Enter); //.submit()
+
+
 
             var course = driver.FindElement(By.CssSelector(".products__title")).Text;
             Console.WriteLine(course);
             Assert.IsTrue(course.Contains("Selenium"));
+
 
             //lo declaro webelement para poder hacer scroll al elemento, no al boolean como le puse antes y es un elemento
             var webElement = driver.FindElement(By.XPath("//h3[contains(text(),'Page Objects')]"));
@@ -55,6 +64,7 @@ namespace Ejercicio3
             // ejemplo de git.
 
             driver.ExplicitWaitUntil(() => driver.FindElement(title).Displayed, TimeSpan.FromSeconds(3));
+            //declarás el tipo de elemento del selector en este caso  es tipo "string"
             string titleText = driver.FindElement(title).Text;
 
             var start_title = titleText.Trim().StartsWith("Course"); //TrimStart y TrimEnd

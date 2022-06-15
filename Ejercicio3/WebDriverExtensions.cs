@@ -27,8 +27,30 @@ namespace Ejercicio3
 
             }
 
-            catch (Exception)
+            catch
             {
+                
+                return false;
+
+            }
+
+        }
+
+        public static bool ExplicitWaitUntilText(this IWebDriver driver, Func<bool> func, By text,String value, TimeSpan timeout)
+        {
+
+            try
+            {
+                var result = new WebDriverWait(driver, timeout).Until(x => func());
+                driver.FindElement(text).SendKeys(value);
+
+                return result;
+
+            }
+
+            catch
+            {
+
                 return false;
 
             }

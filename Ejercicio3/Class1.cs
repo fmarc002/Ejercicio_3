@@ -16,6 +16,8 @@ namespace Ejercicio3
     public class Class1 : ClassBase
     {
 
+        // Punto 3.1 - Ir a la sección “NN” (cada pasante le toca una) y verifique la visualización
+        //de los elementos principales de la página, verificar su texto y/o valor por defecto.
         [Test]
         public void test_1()
         {
@@ -30,6 +32,7 @@ namespace Ejercicio3
             Assert.IsTrue(description);
         }
 
+        // Punto 3.3 - Clonar el test y cambiar alguna assertion para lograr que falle el segundo test
         [Test]
         public void test_2()
         {
@@ -47,6 +50,7 @@ namespace Ejercicio3
 
         }
 
+        // Punto 3.4 - Crear otro test que realice alguna acción/workflow en la página y agregar las aserciones del resultado.
         [Test]
         public void test_3()
         {
@@ -73,13 +77,13 @@ namespace Ejercicio3
             var video = driver.FindElement(By.XPath("//div//a[@class='et_pb_video_play']")).Displayed;
             // css: driver.FindElement(By.CssSelector(".et_pb_video_play"));
             Assert.IsTrue(video);
-            
+
 
             //image: Featured On These Websites
             var image = driver.FindElement(By.XPath("(//div/span[@class = 'et_pb_image_wrap'])[15]")).Displayed;
             Assert.IsNotNull(image);
 
-            //url
+            //url - Use method GetAttribute()
             String url_video = driver.FindElement(By.XPath("//*[contains(@name,'fitvid0')]")).GetAttribute("src");
             Console.WriteLine(url_video);
             var url_expected = "https://www.youtube.com/embed/aRbmmYf41yQ?feature=oembed";
@@ -87,6 +91,7 @@ namespace Ejercicio3
 
             driver.FindElement(By.XPath(" (//div/h5[@class ='et_pb_toggle_title'])[1]")).Click();
             var questions = driver.FindElement(By.XPath("(//div[@class ='et_pb_toggle_content clearfix'])[1]"));
+            // use method GetCssValue ("Style")
             var display_question = questions.GetCssValue("display");
             Console.WriteLine(display_question);
             Assert.AreEqual("block", display_question);

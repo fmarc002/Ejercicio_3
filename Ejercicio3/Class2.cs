@@ -16,6 +16,11 @@ namespace Ejercicio3
     //aplicamos herencia
     public class Class2 : ClassBase
     {
+        //Punto 4 - Agregar otra clase test: Agregar otra clase de test para otra sección diferente
+        //de la utilizada en el ejercicio anterior e implementar 2 tests en esa clase:
+        //1. Uno que verifique el contenido propio.
+        //2. Otro que haga alguna acción permitida en la página y se verifiquen los resultados de
+        //esa acción.
 
         [Test]
         public void test_1()
@@ -35,8 +40,8 @@ namespace Ejercicio3
 
             //lo declaro webelement para poder hacer scroll al elemento, no al boolean como le puse antes y es un elemento
             var webElement = driver.FindElement(By.XPath("//h3[contains(text(),'Page Objects')]"));
-            
-            //scroll down
+
+            //scroll down (Lo hice de practica ya que me surgio de curiosa para saber como era!)
             var js = driver as IJavaScriptExecutor;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", webElement);
 
@@ -44,22 +49,26 @@ namespace Ejercicio3
 
             driver.FindElement(By.XPath("//h3[contains(text(),'Page Objects')]")).Click();
 
+            // Punto 7:
+            // Extender Webdriver: Extender Webdriver para que se haga un explicit wait del
+            // elemento cada vez que se lo busca.Ver ejemplo de cómo se hace en el proyecto
+            // ejemplo de git.
+
             driver.ExplicitWaitUntil(() => driver.FindElement(title).Displayed, TimeSpan.FromSeconds(3));
-            string titleText =driver.FindElement(title).Text;
+            string titleText = driver.FindElement(title).Text;
 
             var start_title = titleText.Trim().StartsWith("Course"); //TrimStart y TrimEnd
             Assert.IsTrue(start_title);
-            
-           
 
         }
 
+        // test con Select Element
         [Test]
         public void test_2()
         {
             //select element
             driver.Navigate().GoToUrl(ultimateQa);
-            driver.FindElement(By.XPath("//a[contains(text(), 'Interactions')]")).Click();           
+            driver.FindElement(By.XPath("//a[contains(text(), 'Interactions')]")).Click();
             SelectElement element = new SelectElement(this.driver.FindElement(By.CssSelector(".et_pb_blurb_description select")));
             //list select element
             var expectedOptions = new List<string>()
@@ -80,8 +89,8 @@ namespace Ejercicio3
             element.SelectByIndex(0);
             Assert.AreEqual(element.SelectedOption.Text, "Volvo");
 
-      
-            
+
+
         }
 
     }

@@ -10,10 +10,15 @@ namespace Ejercicio3
 {
     public static class WebDriverExtensions
     {
-       
-        public static bool ExplicitWaitUntil( this IWebDriver driver, Func<bool> func, TimeSpan timeout)
+
+        // Punto 7:
+        // Extender Webdriver: Extender Webdriver para que se haga un explicit wait del
+        // elemento cada vez que se lo busca.Ver ejemplo de cómo se hace en el proyecto
+        // ejemplo de git.
+
+        public static bool ExplicitWaitUntil(this IWebDriver driver, Func<bool> func, TimeSpan timeout)
         {
-            
+
             try
             {
                 var result = new WebDriverWait(driver, timeout).Until(x => func());
@@ -22,10 +27,10 @@ namespace Ejercicio3
 
             }
 
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
-                
+
             }
 
         }

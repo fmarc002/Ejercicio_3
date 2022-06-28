@@ -36,25 +36,25 @@ namespace Ejercicio3
 
         }
 
-        public static bool ExplicitWaitUntilText(this IWebDriver driver, Func<bool> func, By text,String value, TimeSpan timeout)
-        {
+        //public static bool ExplicitWaitUntilText(this IWebDriver driver, Func<bool> func, By text,String value, TimeSpan timeout)
+        //{
 
-            try
-            {
-                var result = new WebDriverWait(driver, timeout).Until(x => func());
-                driver.FindElement(text).SendKeys(value);
+        //    try
+        //    {
+        //        var result = new WebDriverWait(driver, timeout).Until(x => func());
+        //        driver.FindElement(text).SendKeys(value);
 
-                return result;
+        //        return result;
 
-            }
+        //    }
 
-            catch
-            {
+        //    catch
+        //    {
 
-                return false;
+        //        return false;
 
-            }
+        //    }
 
-        }
+        //}
     }
 }

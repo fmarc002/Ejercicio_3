@@ -34,3 +34,4 @@ C:\Users\fmarc\source\repos\Ejercicio3\Ejercicio3\bin\Debug\System.Numerics.Vect
 C:\Users\fmarc\source\repos\Ejercicio3\Ejercicio3\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\fmarc\source\repos\Ejercicio3\Ejercicio3\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\fmarc\source\repos\Ejercicio3\Ejercicio3\bin\Debug\SeleniumExtras.WaitHelpers.dll
+C:\Users\fmarc\source\repos\Ejercicio3\Ejercicio3\bin\Debug\Ejercicio3.dll.config

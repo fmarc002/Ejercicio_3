@@ -36,7 +36,7 @@ namespace Ejercicio3
 
         }
 
-        //public static bool ExplicitWaitUntilText(this IWebDriver driver, Func<bool> func, By text,String value, TimeSpan timeout)
+        //public static bool WaitUntilAndSendKeysText(this IWebDriver driver, Func<bool> func, By text,String value, TimeSpan timeout)
         //{
 
         //    try

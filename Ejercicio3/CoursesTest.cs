@@ -42,7 +42,6 @@ namespace Ejercicio3
             search.SendKeys(Keys.Enter); //.submit()
 
             var course = driver.FindElement(By.CssSelector(".products__title")).Text;
-            Console.WriteLine(course);
             Assert.IsTrue(course.Contains("Selenium"));
 
 
@@ -52,7 +51,6 @@ namespace Ejercicio3
             //scroll down (Lo hice de practica ya que me surgio de curiosa para saber como era!)
             var js = driver as IJavaScriptExecutor;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", webElement);
-
             Assert.IsFalse(!webElement.Displayed);
 
             driver.FindElement(By.XPath("//h3[contains(text(),'Page Objects')]")).Click();
@@ -61,11 +59,9 @@ namespace Ejercicio3
             // Extender Webdriver: Extender Webdriver para que se haga un explicit wait del
             // elemento cada vez que se lo busca.Ver ejemplo de cómo se hace en el proyecto
             // ejemplo de git.
-
             driver.ExplicitWaitUntil(() => driver.FindElement(title).Displayed, TimeSpan.FromSeconds(3));
             //declarás el tipo de elemento del selector en este caso  es tipo "string"
             string titleText = driver.FindElement(title).Text;
-
             var start_title = titleText.Trim().StartsWith("Course"); //TrimStart y TrimEnd
             Assert.IsTrue(start_title);
 
